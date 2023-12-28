@@ -11,8 +11,6 @@ CREATE TABLE ad
    createdAt DATE, 
    category_id INT, 
    FOREIGN KEY (category_id) REFERENCES category (id)
- 
-
 ); 
 
 CREATE TABLE category
