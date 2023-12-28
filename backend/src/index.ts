@@ -1,7 +1,7 @@
 import 'reflect-metadata'; 
 
 import express, {Request, Response} from "express"; 
-
+import { validate } from 'class-validator';
 import db from './db';
 import { Ad } from './entities/ad';
 
@@ -52,13 +52,20 @@ app.get("/ads", async (req: Request, res: Response) => {
       console.log(err); 
       res.sendStatus(500)
     }
-    
+
   });
 
 app.post("/ads", async (req: Request, res: Response) => {
 
   try {
-    const newAd = Ad.create(req.body)
+    const newAd = Ad.create(req.body); 
+
+    const errors = await validate(newAd); 
+    console.log({errors}); 
+
+    if(errors) return res.status(422).send({errors}); 
+
+    console.log()
     res.send(await newAd.save())
   } catch (err) {
     console.log(err); 
