@@ -1,5 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, Entity , PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity ,  ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import { Length, Min } from 'class-validator'
+import { Category } from "./category";
 
 @Entity()
 export class Ad extends BaseEntity {
@@ -28,5 +29,8 @@ export class Ad extends BaseEntity {
 
     @CreateDateColumn()
     createdAt: string; 
+
+    @ManyToOne(() => Category, (c) => c.ads)
+    category: Category; 
 
 };
