@@ -31,7 +31,10 @@ export class Ad extends BaseEntity {
     @CreateDateColumn()
     createdAt: string; 
 
-    @ManyToOne(() => Category, (c) => c.ads)
+    @ManyToOne(() => Category, (c) => c.ads,{
+        cascade: true, 
+        onDelete: "CASCADE",
+    })
     category: Category; 
 
     @JoinTable()
