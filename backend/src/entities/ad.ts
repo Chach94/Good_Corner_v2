@@ -8,7 +8,7 @@ export class Ad extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 100 })
+    @Column({ length: 50 })
     @Length(5, 50,{ message: "le titre doit contenir entre 5 et 100 caractères"})
     title: string;
 

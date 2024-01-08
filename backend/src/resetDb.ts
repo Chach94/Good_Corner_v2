@@ -38,7 +38,7 @@ async function main(){
     })
 
     const cat1 = Category.create({name: "informatique"}); 
-
+    const cat2 = Category.create({ name: "voitures" });
     const tag1 = Tag.create({name: "tag1"});
     const tag2 = Tag.create({name: "tag2"});
     const tag3 = Tag.create({name: "tag3"});
@@ -46,7 +46,7 @@ async function main(){
     ad1.category = cat1; 
     ad1.tags = [tag1, tag2]; 
 
-    ad2.category = cat1
+    ad2.category = cat2
     ad2.tags =[tag2, tag3]
 
     await ad1.save(); 
